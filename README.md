@@ -68,7 +68,7 @@ NGSpeciesID --ont --fastq test_files/test_input --outfolder test_files/test_outp
 cat consensus_reference_*.fasta > consensus.fasta
 ```
 
-3. These consensus sequences can be searched with `blastn` against the ComEC amplicon database. (*Before running this script, the blastdb for the ComEC amplicon database has to be set up first see instruction above*)
+3. These consensus sequences can be searched with `blastn` against the ComEC amplicon database. (*Before running this script, the blastdb for the ComEC amplicon database has to be set up first. See instruction above*)
 ```
 blastn -db Xylella_ComEC_PCR_amplicons.db -query consensus.fasta -out consensus.blastout -outfmt 7
 ```
@@ -82,7 +82,7 @@ Here's the command to run this script against the test dataset
 bash run_pcrONT.sh -i test_files/test_input -o test_files/test_output -d /path/to/Xylella_ComEC_PCR_amplicons.fasta.blastdb
 ```
 
-- `-i` flag the input path location with the fastq files
-- `-o` flag the output path
+- `-i` flag the path to the directory containing the input fastq files
+- `-o` flag the path you wish to save the output files at
 - `-d` flag the path to the blastdb for the ComEC amplicon database
 

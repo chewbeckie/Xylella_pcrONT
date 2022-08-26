@@ -58,9 +58,9 @@ Unziped, basecalled, demultiplexed raw read files from Nanopore run in `fastq` f
 ### Step-by-step instruction
 1. Run [NGSpeciesID](https://github.com/ksahlin/NGSpeciesID) on the raw reads to generate one or more consensus sequences based on similarity, and polish the consensus sequences using `medaka`
 
-Here's an example using the test raw read fastq files in `test_files/test_input`
+Here's an example using a test raw read fastq file in `test_files/test_input`
 ```
-NGSpeciesID --ont --fastq test_files/test_input --outfolder test_files/test_output --consensus --medaka
+NGSpeciesID --ont --fastq ComEC-pcr-CFBP8072.fastq --outfolder test_files/test_output --consensus --medaka
 ```
 
 2. The NGSpeciesID will generate distinct consensus sequences named as `consensus_reference_0.fasta`, `consensus_reference_1.fasta`, etc. These sequences can be concatenated by running the following command

@@ -1,0 +1,17 @@
+##fileformat=VCFv4.1
+##medaka_version=1.7.0
+##contig=<ID=Xylella_fastidiosa_fastidiosa-ComEC_pcr_amplicon>
+##medaka_version=1.7.0
+##contig=<ID=Xylella_fastidiosa_fastidiosa-ComEC_pcr_amplicon,length=650>
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Medaka genotype.">
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Medaka genotype quality score">
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Depth of reads at pos">
+##INFO=<ID=DPS,Number=2,Type=Integer,Description="Depth of reads at pos by strand (fwd, rev)">
+##INFO=<ID=DPSP,Number=1,Type=Integer,Description="Depth of reads spanning pos +-25">
+##INFO=<ID=SR,Number=.,Type=Integer,Description="Depth of spanning reads by strand which best align to each allele (ref fwd, ref rev, alt1 fwd, alt1 rev, etc.)">
+##INFO=<ID=AR,Number=2,Type=Integer,Description="Depth of ambiguous spanning reads by strand which align equally well to all alleles (fwd, rev)">
+##INFO=<ID=SC,Number=.,Type=Integer,Description="Total alignment score to each allele of spanning reads by strand (ref fwd, ref rev, alt1 fwd, alt1 rev, etc.) aligned with parasail: match 5, mismatch -4, open 5, extend 3">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	SAMPLE
+Xylella_fastidiosa_fastidiosa-ComEC_pcr_amplicon	78	.	T	G	25.295	PASS	DP=8063;DPS=99,7964	GT:GQ	1:25
+Xylella_fastidiosa_fastidiosa-ComEC_pcr_amplicon	99	.	T	G	43.046	PASS	DP=7970;DPS=117,7853	GT:GQ	1:43
+Xylella_fastidiosa_fastidiosa-ComEC_pcr_amplicon	179	.	GG	CT	75.481	PASS	DP=7776;DPS=1085,6691	GT:GQ	1:75

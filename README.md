@@ -16,7 +16,7 @@ This workflow has been tested to work on Linux environment with conda installed 
 **Installation with conda**
 NGSpeicesID and the latest version of medaka are not compatible due to variation in dependency. Therefore, separate conda environments should be created for running NGSpeicesID and medaka
 
-**Creating NGSpecies environment**
+1. Creating NGSpecies environment
 ```
 conda create -n NGSpeciesID python=3.6 pip 
 conda activate NGSpeciesID
@@ -24,7 +24,7 @@ conda install --yes -c conda-forge -c bioconda medaka==0.11.5 openblas==0.3.3 sp
 pip install NGSpeciesID
 ```
 
-**Creating medaka environment**
+2. Creating medaka environment
 ```
 conda create -n medaka -c conda-forge -c bioconda medaka blast
 ```

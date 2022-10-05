@@ -1,0 +1,46 @@
+Creating fai index file /home/mbac/JWong/git_projects/Xylella_pcrONT/test_consensus_output/NGSpeciesIDout/ComEC-pcr-NCPPB4612/consensus_reference_0.fasta.fai
+Creating mmi index file /home/mbac/JWong/git_projects/Xylella_pcrONT/test_consensus_output/NGSpeciesIDout/ComEC-pcr-NCPPB4612/consensus_reference_0.fasta.map-ont.mmi
+[M::mm_idx_gen::0.002*1.82] collected minimizers
+[M::mm_idx_gen::0.003*2.30] sorted minimizers
+[M::main::0.005*1.89] loaded/built the index for 1 target sequence(s)
+[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::0.005*1.88] distinct minimizers: 205 (94.15% are singletons); average occurrences: 1.063; average spacing: 5.528; total length: 1205
+[M::main] Version: 2.24-r1122
+[M::main] CMD: minimap2 -I 16G -x map-ont -d /home/mbac/JWong/git_projects/Xylella_pcrONT/test_consensus_output/NGSpeciesIDout/ComEC-pcr-NCPPB4612/consensus_reference_0.fasta.map-ont.mmi /home/mbac/JWong/git_projects/Xylella_pcrONT/test_consensus_output/NGSpeciesIDout/ComEC-pcr-NCPPB4612/consensus_reference_0.fasta
+[M::main] Real time: 0.005 sec; CPU: 0.009 sec; Peak RSS: 0.003 GB
+[M::main::0.005*1.43] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.005*1.41] mid_occ = 10
+[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::0.005*1.40] distinct minimizers: 205 (94.15% are singletons); average occurrences: 1.063; average spacing: 5.528; total length: 1205
+[M::worker_pipeline::1.688*0.94] mapped 17281 sequences
+[M::main] Version: 2.24-r1122
+[M::main] CMD: minimap2 -x map-ont --secondary=no -L --MD -A 2 -B 4 -O 4,24 -E 2,1 -t 1 -a /home/mbac/JWong/git_projects/Xylella_pcrONT/test_consensus_output/NGSpeciesIDout/ComEC-pcr-NCPPB4612/consensus_reference_0.fasta.map-ont.mmi /home/mbac/JWong/git_projects/Xylella_pcrONT/test_consensus_output/NGSpeciesIDout/ComEC-pcr-NCPPB4612/reads_to_consensus_0.fastq
+[M::main] Real time: 1.693 sec; CPU: 1.587 sec; Peak RSS: 0.021 GB
+[14:13:09 - Predict] Setting tensorflow inter/intra-op threads to 1/1.
+[14:13:09 - Predict] Processing region(s): consensus_cl_id_0_total_supporting_reads_17281:0-1205
+[14:13:09 - Predict] Using model: /home/mbac/miniconda3/envs/medaka/lib/python3.8/site-packages/medaka/data/r941_min_hac_g507_model.tar.gz.
+[14:13:09 - Predict] Processing 1 long region(s) with batching.
+[14:13:09 - MdlStrTF] Model <keras.engine.sequential.Sequential object at 0x7fa1f760cd90>
+[14:13:09 - MdlStrTF] loading weights from /tmp/tmpfunvxi53/model/variables/variables
+[14:13:09 - BAMFile] Creating pool of 16 BAM file sets.
+[14:13:09 - Sampler] Initializing sampler for consensus of region consensus_cl_id_0_total_supporting_reads_17281:0-1205.
+[14:13:09 - PWorker] Running inference for 0.0M draft bases.
+[14:13:10 - Feature] Pileup counts do not span requested region, requested consensus_cl_id_0_total_supporting_reads_17281:0-1205, received 94-1204.
+[14:13:10 - Feature] Processed consensus_cl_id_0_total_supporting_reads_17281:94.0-1204.0 (median depth 7518.0)
+[14:13:10 - Sampler] Took 0.80s to make features.
+[14:13:10 - Sampler] Region consensus_cl_id_0_total_supporting_reads_17281:94.0-1204.0 (3614 positions) is smaller than inference chunk length 10000, quarantining.
+[14:13:10 - PWorker] Processed 0 batches
+[14:13:10 - PWorker] All done, 1 remainder regions.
+[14:13:10 - Predict] Processing 1 short region(s).
+[14:13:10 - MdlStrTF] Model <keras.engine.sequential.Sequential object at 0x7fa1f5793b80>
+[14:13:10 - MdlStrTF] loading weights from /tmp/tmpfunvxi53/model/variables/variables
+[14:13:10 - Sampler] Initializing sampler for consensus of region consensus_cl_id_0_total_supporting_reads_17281:94-1205.
+[14:13:10 - PWorker] Running inference for 0.0M draft bases.
+[14:13:12 - Feature] Processed consensus_cl_id_0_total_supporting_reads_17281:94.0-1204.0 (median depth 7518.0)
+[14:13:12 - Sampler] Took 1.46s to make features.
+[14:13:18 - PWorker] Batches in cache: 1.
+[14:13:18 - PWorker] Processed 1 batches
+[14:13:18 - PWorker] All done, 0 remainder regions.
+[14:13:18 - Predict] Finished processing all regions.
+[14:13:20 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[14:13:21 - DataIndx] Loaded 1/1 (100.00%) sample files.

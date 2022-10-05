@@ -1,0 +1,45 @@
+Creating fai index file /home/mbac/JWong/git_projects/Xylella_pcrONT/test_consensus_output/NGSpeciesIDout/ComEC-pcr-ICMP8739/consensus_reference_2.fasta.fai
+Creating mmi index file /home/mbac/JWong/git_projects/Xylella_pcrONT/test_consensus_output/NGSpeciesIDout/ComEC-pcr-ICMP8739/consensus_reference_2.fasta.map-ont.mmi
+[M::mm_idx_gen::0.002*2.44] collected minimizers
+[M::mm_idx_gen::0.003*2.54] sorted minimizers
+[M::main::0.006*1.75] loaded/built the index for 1 target sequence(s)
+[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::0.006*1.73] distinct minimizers: 139 (87.05% are singletons); average occurrences: 1.129; average spacing: 5.745; total length: 902
+[M::main] Version: 2.24-r1122
+[M::main] CMD: minimap2 -I 16G -x map-ont -d /home/mbac/JWong/git_projects/Xylella_pcrONT/test_consensus_output/NGSpeciesIDout/ComEC-pcr-ICMP8739/consensus_reference_2.fasta.map-ont.mmi /home/mbac/JWong/git_projects/Xylella_pcrONT/test_consensus_output/NGSpeciesIDout/ComEC-pcr-ICMP8739/consensus_reference_2.fasta
+[M::main] Real time: 0.007 sec; CPU: 0.011 sec; Peak RSS: 0.003 GB
+[M::main::0.005*1.40] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.006*1.38] mid_occ = 10
+[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::0.006*1.37] distinct minimizers: 139 (87.05% are singletons); average occurrences: 1.129; average spacing: 5.745; total length: 902
+[M::worker_pipeline::0.722*0.93] mapped 4269 sequences
+[M::main] Version: 2.24-r1122
+[M::main] CMD: minimap2 -x map-ont --secondary=no -L --MD -A 2 -B 4 -O 4,24 -E 2,1 -t 1 -a /home/mbac/JWong/git_projects/Xylella_pcrONT/test_consensus_output/NGSpeciesIDout/ComEC-pcr-ICMP8739/consensus_reference_2.fasta.map-ont.mmi /home/mbac/JWong/git_projects/Xylella_pcrONT/test_consensus_output/NGSpeciesIDout/ComEC-pcr-ICMP8739/reads_to_consensus_2.fastq
+[M::main] Real time: 0.723 sec; CPU: 0.675 sec; Peak RSS: 0.009 GB
+[14:11:11 - Predict] Setting tensorflow inter/intra-op threads to 1/1.
+[14:11:11 - Predict] Processing region(s): consensus_cl_id_2_total_supporting_reads_4269:0-902
+[14:11:11 - Predict] Using model: /home/mbac/miniconda3/envs/medaka/lib/python3.8/site-packages/medaka/data/r941_min_hac_g507_model.tar.gz.
+[14:11:11 - Predict] Processing 1 long region(s) with batching.
+[14:11:11 - MdlStrTF] Model <keras.engine.sequential.Sequential object at 0x7fd07f917df0>
+[14:11:11 - MdlStrTF] loading weights from /tmp/tmpcp6k_49e/model/variables/variables
+[14:11:11 - BAMFile] Creating pool of 16 BAM file sets.
+[14:11:11 - Sampler] Initializing sampler for consensus of region consensus_cl_id_2_total_supporting_reads_4269:0-902.
+[14:11:12 - PWorker] Running inference for 0.0M draft bases.
+[14:11:12 - Feature] Processed consensus_cl_id_2_total_supporting_reads_4269:0.0-901.0 (median depth 3792.5)
+[14:11:12 - Sampler] Took 0.76s to make features.
+[14:11:12 - Sampler] Region consensus_cl_id_2_total_supporting_reads_4269:0.0-901.0 (3006 positions) is smaller than inference chunk length 10000, quarantining.
+[14:11:12 - PWorker] Processed 0 batches
+[14:11:12 - PWorker] All done, 1 remainder regions.
+[14:11:12 - Predict] Processing 1 short region(s).
+[14:11:13 - MdlStrTF] Model <keras.engine.sequential.Sequential object at 0x7fd07da9ffa0>
+[14:11:13 - MdlStrTF] loading weights from /tmp/tmpcp6k_49e/model/variables/variables
+[14:11:13 - Sampler] Initializing sampler for consensus of region consensus_cl_id_2_total_supporting_reads_4269:0-902.
+[14:11:13 - PWorker] Running inference for 0.0M draft bases.
+[14:11:14 - Feature] Processed consensus_cl_id_2_total_supporting_reads_4269:0.0-901.0 (median depth 3792.5)
+[14:11:14 - Sampler] Took 0.74s to make features.
+[14:11:19 - PWorker] Batches in cache: 1.
+[14:11:19 - PWorker] Processed 1 batches
+[14:11:19 - PWorker] All done, 0 remainder regions.
+[14:11:19 - Predict] Finished processing all regions.
+[14:11:21 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[14:11:22 - DataIndx] Loaded 1/1 (100.00%) sample files.

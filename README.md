@@ -1,8 +1,11 @@
 # Xylella_pcrONT
 
-**Last update on 24 August 2022**
+**Last update on 5 October 2022**
 
-A quick script for *Xylella* species/subspecies identification from *Xylella*-ComEC PCR + Nanopore sequencing workflow.
+A quick tutorial for *Xylella* species/subspecies identification from *Xylella*-ComEC PCR + Nanopore sequencing workflow. Three methods are summarised here:
+- A. ***De novo* sequence cluster method**
+- B. **Reference-guided consensus method**
+- C. **Alignment and variant calling method**
 
 ## Requirement and Dependency
 This workflow has been tested to work on Linux environment with conda installed and it is dependent on the following tools:
@@ -11,16 +14,19 @@ This workflow has been tested to work on Linux environment with conda installed 
 3. [NGSpeciesID](https://github.com/ksahlin/NGSpeciesID)
 
 **Installation with conda**
-1. Create and activate conda environment
+NGSpeicesID and the latest version of medaka are not compatible due to variation in dependency. Therefore, separate conda environments should be created for running NGSpeicesID and medaka
+
+**Creating NGSpecies environment**
 ```
-conda create -n Xylella_pcrONT
-conda activate Xylella_pcrONT
+conda create -n NGSpeciesID python=3.6 pip 
+conda activate NGSpeciesID
+conda install --yes -c conda-forge -c bioconda medaka==0.11.5 openblas==0.3.3 spoa racon minimap2 blast
+pip install NGSpeciesID
 ```
 
-2. Install required packages
+**Creating medaka environment**
 ```
-conda install -c bioconda -c conda-forge medaka openblas==0.3.3 spoa racon minimap2 blast
-pip install NGSpeciesID
+conda create -n medaka -c conda-forge -c bioconda medaka blast
 ```
 
 3. Clone this into your working directory
@@ -31,14 +37,8 @@ git clone https://github.com/chewbeckie/Xylella_pcrONT
 ## ComEC amplicon database
 The `Xylella_ComEC_PCR_amplicons.fasta` file contains different amplicon sequences identified from a collection of *Xylella* genomes in the public genome database on ncbi.
 
-**Total number of ComEC PCR amplicon variants (*As of 24 August 2022*)**
-|Species | subspecies | Number of sequence variant |
-|--------|------------|----------------------------|
-|*Xylella fastidiosa*| *fastidiosa* or *morus* | 1 |
-|*Xylella fastidiosa*| *pauca* | 4 |
-|*Xylella fastidiosa*| *sandyi* | 1 |
-|*Xylella fastidiosa*| *multiplex* | 2 |
-|*Xylella taiwanensis*| - | 1 |
+![alignment of Xylella ComEC PCR amplicons](./ComEC-ampliconalignment_genomes129.svg)
+**Figure 1:** Alignment of *Xylella* ComEC PCR amplicons extracted from 129 *Xylella* genomes in ncbi genome database (as of 24 August 2022)
 
 Unique sequences are collaged into the `Xylella_ComEC_PCR_amplicons.fasta` file in `database`
 
@@ -56,8 +56,13 @@ Unziped, basecalled, demultiplexed raw read files from Nanopore sequencing run i
 
 ## *De novo* sequence cluster method
 
+To use this method, the NGSpeciesID environment has to be activated first.
+```
+conda activate NGSpeciesID
+```
+
 ### Step-by-step instruction
-1. Run [NGSpeciesID](https://github.com/ksahlin/NGSpeciesID) on the raw reads to generate one or more consensus sequences based on similarity, and polish the consensus sequences using `medaka`
+1. Run [NGSpeciesID](https://github.com/ksahlin/NGSpeciesID) on the raw reads to generate one or more consensus sequences based on similarity.
 
 Here's an example using a test raw read fastq file in `test_files/test_input`
 ```
@@ -77,20 +82,49 @@ This will generate a blast report listed the matching sequence from the closest 
 
 
 ### Automated script for batch processing
-The script `run_pcrONT.sh` automate the above process.
-Here's the command to run this script against the test dataset in `test_files/test_input` to generate sample output data in `test_consensus_output`
+The script `run_NGSpeciesID.sh` automate the above process.
+Here's the command to run this script against the test dataset in `test_files/test_input` to generate sample output data in `test_consensus_output`.
+
+**Before running this command, please change the /absolute_path/to/Xylella_ComEC_PCR_amplicons.fasta.blastdb to the absolute path of your blast database**
+
 ```
 #first create a output directory
 mkdir test_files/test_consensus_output
 
 #then run script
-bash run_pcrONT.sh -i test_files/test_input -o test_files/test_consensus_output -d /absolute_path/to/Xylella_ComEC_PCR_amplicons.fasta.blastdb
+bash run_NGSpeciesID.sh  -i test_files/test_input \
+                    -o test_files/test_NGSpeciesID_output \
+                    -d Xylella_ComEC_PCR_amplicons.fasta.blastdb
 ```
 
 The following parameters have to be set to run this script
 - `-i` flag the path to the directory containing the input fastq files
 - `-o` flag the path you wish to save the output files at
-- `-d` flag the *absolute* path to the blastdb for the ComEC amplicon database
+- `-d` flag the path to the blastdb for the ComEC amplicon database
+
+## Reference-guided consensus method
+
+To use this method, the medaka environment has to be activated first.
+```
+conda activate medaka
+```
+
+### Step-by-step instruction
+1. Run `medaka_consensus` and use one of the amplicon sequences as a reference. Here's an example using the `Xylella_fastidiosa_fastidiosa-ComEC_pcr_amplicon.fasta` as a reference.
+```
+medaka_consensus -i ComEC-pcr-CFBP8072.fastq \
+                 -d database/separate_seqs/Xylella_fastidiosa_fastidiosa-ComEC_pcr_amplicon.fasta \
+                 -o medaka_output-CFBP8072 \
+                 -m r941_min_high_g303
+```
+You can find the consensus sequence under the output directory `medaka_output-CFBP8072`
+
+2. Then using the consensus sequence generated, search the sequence using `blastn` against the ComEC amplicon database. (*Before running this script, the blastdb for the ComEC amplicon database has to be set up first. See instruction above*)
+```
+blastn -db Xylella_ComEC_PCR_amplicons.db -query medaka_output-CFBP8072/consensus.fasta -out consensus.blastout -outfmt 7
+```
+This will generate a blast report listed the matching sequence from the closest match to the least.
+
 
 ## Alignment and variant calling method
 

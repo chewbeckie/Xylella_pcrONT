@@ -85,16 +85,14 @@ This will generate a blast report listed the matching sequence from the closest 
 The script `run_NGSpeciesID.sh` automate the above process.
 Here's the command to run this script against the test dataset in `test_files/test_input` to generate sample output data in `test_consensus_output`.
 
-**Before running this command, please change the /absolute_path/to/Xylella_ComEC_PCR_amplicons.fasta.blastdb to the absolute path of your blast database**
+**Before running this command, please change the /path/to/Xylella_ComEC_PCR_amplicons.fasta.blastdb to the path of your blast database**
 
 ```
 #first create a output directory
 mkdir test_files/test_consensus_output
 
 #then run script
-bash run_NGSpeciesID.sh  -i test_files/test_input \
-                    -o test_files/test_NGSpeciesID_output \
-                    -d Xylella_ComEC_PCR_amplicons.fasta.blastdb
+bash run_NGSpeciesID.sh  -i test_files/test_input -o test_files/test_NGSpeciesID_output -d /path/to/Xylella_ComEC_PCR_amplicons.fasta.blastdb
 ```
 
 The following parameters have to be set to run this script

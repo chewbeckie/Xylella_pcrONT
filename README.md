@@ -1,10 +1,10 @@
 # Xylella_pcrONT
 
-**Last update on 5 October 2022**
+**Last update on 25 May 2023**
 
 A quick tutorial for *Xylella* species/subspecies identification from *Xylella*-ComEC PCR + Nanopore sequencing workflow. Three methods are summarised here:
 - A. ***De novo* sequence cluster method**
-- B. **Reference-guided consensus method**
+- B. **Reference-guided consensus method (not recommended)**
 - C. **Alignment and variant calling method**
 
 ## Requirement and Dependency
@@ -100,8 +100,9 @@ The following parameters have to be set to run this script
 - `-o` flag the path you wish to save the output files at
 - `-d` flag the path to the blastdb for the ComEC amplicon database
 
-## Reference-guided consensus method
+## Reference-guided consensus method (not recommended)
 
+**This method is not recommended as it can generate unreliable identification when read count is low or in no-template control**
 To use this method, the medaka environment has to be activated first.
 ```
 conda activate medaka

@@ -1,10 +1,10 @@
 # Xylella_pcrONT
 
-**Last update on 25 May 2023**
+**Last update on 18 July 2023**
 
 A quick tutorial for *Xylella* species/subspecies identification from *Xylella*-ComEC PCR + Nanopore sequencing workflow. Three methods are summarised here:
 - A. ***De novo* sequence cluster method**
-- B. **Reference-guided consensus method (not recommended)**
+- B. **Reference-guided consensus method**
 - C. **Alignment and variant calling method**
 
 ## Requirement and Dependency
@@ -100,9 +100,8 @@ The following parameters have to be set to run this script
 - `-o` flag the path you wish to save the output files at
 - `-d` flag the path to the blastdb for the ComEC amplicon database
 
-## Reference-guided consensus method (not recommended)
+## Reference-guided consensus method
 
-**This method is not recommended as it can generate unreliable identification when read count is low or in no-template control**
 To use this method, the medaka environment has to be activated first.
 ```
 conda activate medaka
@@ -131,3 +130,11 @@ Alternatively, variant calling can be done individually using amplicon sequences
 ```
 medaka_haploid_variant -i ComEC-pcr-CFBP8072.fastq -r database/separate_seqs/Xylella_fastidiosa_fastidiosa-ComEC_pcr_amplicon.fasta -o test_files/test_vcall_output
 ```
+
+## Result interpretation
+The following criteria should be put into consideration to validate the result:
+1.	A positive amplification at 650bp should be detectable using gel electrophoresis.
+2.	N50 value ≥ 200 bp.
+3.	At least 50% of all reads should map to any of the amplicon sequence variants.
+4.	BLAST search result should have a nucleotide identity percentage ≥ 90% and a query coverage ≥ 70% to the amplicon sequence.
+A valid Xylella species/subspecies identification should meet all of the above criteria. If the BLAST search produced a match to X-ComEC PCR amplicons but the sample does not meet all four criteria, it is categorized as an indeterminate result. If the BLAST search did not produce any matches to the PCR amplicon sequences, Xylella is not detected.
